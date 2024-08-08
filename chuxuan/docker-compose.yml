@@ -1,0 +1,21 @@
+version: "3"
+services:
+  chuxuan:
+    image: chuxuan
+    ports:
+      - "9100:9100"
+    networks:
+      - chuxuan-mysql
+    depends_on:
+      - mysqldb
+ 
+  mysqldb:
+    image: mysql:8
+    networks:
+      - chuxuan-mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=dockerzack
+
+networks:
+  chuxuan-mysql: 
